@@ -15,7 +15,7 @@
 
 addon.name      = 'stfuapu';
 addon.author    = 'mogul';
-addon.version   = '0.1';
+addon.version   = '0.2';
 addon.desc      = 'Custom for CatsEyeXI Private Server. Make Apururu stfu about DI battles that are going to happen.';
 
 
@@ -23,7 +23,7 @@ require('common');
 local chat = require('chat');
 
 local settings = {
-    simplemsg = false, -- Change to true for a simplified 1 line message
+    simplemsg = false,
     lastmsg = '';
 };
 
@@ -54,11 +54,51 @@ function Simplify(index)
 end
 
 --[[
+* desc : Checks to see the current state of scanning (paused or unpaused)
+--]]
+function CheckPaused()
+    local pausednow = '';
+    if ispaused == true then
+        pausednow = 'PAUSED';
+    elseif ispaused == false then
+        pausednow = 'UNPAUSED';
+    end
+    print(chat.header(addon.name):append(chat.message('STFUApu is currently: ' .. chat.success(pausednow))));
+end
+
+--[[
+* desc : Prints out the commands list when there is an error with commands or 'help' is used
+--]]
+function PrintHelpCommands(isError)
+    local cmds = T{
+        {'/stfuapu or /apu', 'The two command triggers, you can use either. Will display if addon is paused/unpaused.'},
+        {'/stfuapu pause/unpause or off/on', 'Will pause the blocking of Apu\'s messages.'},
+        {'/stfuapu last', 'Will print the last detailed Apu messaged received but simplified.'},
+        {'/stfuapu simple on/off', 'Turns on/off simple reporting of Apu\'s messages. No on/off returns the current setting.'},
+        {'/stfuapu help', 'Shows this command list.'},
+    };
+
+    if (isError) then
+        print(chat.header(addon.name):append(chat.error('Invalid command syntax for command: ')):append(chat.success('/' .. addon.name)));
+    else
+        print(chat.header(addon.name):append(chat.message('Available commands:')));
+    end
+
+    cmds:ieach(function (v)
+        print(chat.header(addon.name):append(chat.error('Usage: ')):append(chat.message(v[1]):append(' - ')):append(chat.color1(6, v[2])));
+    end);
+
+end
+
+--[[
 * event: text_in
 * desc : Event called when the addon is processing incoming text.
 --]]
 ashita.events.register('text_in', 'text_in_cb', function (e)
 
+    if (ispaused == true) then --If paused (true) just jump out of this
+        return;
+    end
     local msg = e.message_modified;
     for i, v in ipairs(ApuSays) do
         local tNum = string.find(msg, v);
@@ -66,10 +106,86 @@ ashita.events.register('text_in', 'text_in_cb', function (e)
             if (settings.simplemsg == true and i <= 6) then
                 Simplify(i);
             end
-
+            if (i <= 6) then --We write the last message that gives detail to a variable
+                settings.lastmsg = SimpleApuSays[i]; --Write the last detailed message as a simplified message
+            end
             e.blocked = true;
             return;
         end
     end
 
+end);
+
+
+--[[
+* event: command
+* desc : Event called when the addon is processing a command.
+--]]
+ashita.events.register('command', 'command_cb', function (e)
+
+    local args = e.command:args();
+    if (#args == 0 or not args[1]:any('/stfuapu', '/apu')) then
+        return;
+    end
+
+    -- Block all related commands..
+    e.blocked = true;
+
+    -- Handle: /stfuapu or /apu
+    if (#args == 1) then
+        CheckPaused(); --Will print if paused or not if no command is given
+        return;
+    elseif (#args == 2) then
+        if (args[2]:any('pause', 'off')) then
+            if (ispaused == true) then --Check if already paused and if it is tell the user
+                print(chat.header(addon.name):append(chat.message('STFUApu is already ' .. chat.success('PAUSED'))));
+                return;
+            end
+            ispaused = true;
+            CheckPaused();
+        elseif (args[2]:any('unpause', 'on')) then
+            if (ispaused == false) then --Check if already unpaused and if it is tell the user
+                print(chat.header(addon.name):append(chat.message('STFUApu is already ' .. chat.success('UNPAUSED'))));
+                return;
+            end
+            ispaused = false;
+            CheckPaused();
+        elseif (args[2]:any('last')) then
+            if not (settings.lastmsg == '') then
+                print(chat.header(addon.name):append(chat.message('Last message (simplified): ' .. chat.success(settings.lastmsg))));
+            else
+                print(chat.header(addon.name):append(chat.message('There is no current last message from Apururu.')));
+            end
+        elseif (args[2]:any('simple')) then
+            if (settings.simplemsg == true) then
+                print(chat.header(addon.name):append(chat.message('STFUApu Simple Messages are set to: ' .. chat.success('ACTIVE'))));
+            elseif (settings.simplemsg == false) then
+                print(chat.header(addon.name):append(chat.message('STFUApu Simple Messages are set to: ' .. chat.success('INACTIVE'))));
+            end
+        elseif (args[2] == 'help') then
+            PrintHelpCommands();
+        else
+            PrintHelpCommands(true);
+        end
+    elseif (#args >= 3) then
+        if (args[2]:any('simple')) then
+            if (args[3]:any('on')) then
+                if (settings.simplemsg == true) then
+                    print(chat.header(addon.name):append(chat.message('STFUApu Simple Messages are already ' .. chat.success('ACTIVE'))));
+                    return;
+                end
+                settings.simplemsg = true;
+                print(chat.header(addon.name):append(chat.message('STFUApu Simple Messages are set to: ' .. chat.success('ACTIVE'))));
+            elseif (args[3]:any('off')) then
+                if (settings.simplemsg == false) then
+                    print(chat.header(addon.name):append(chat.message('STFUApu Simple Messages are already ' .. chat.success('INACTIVE'))));
+                    return;
+                end
+                settings.simplemsg = false;
+                print(chat.header(addon.name):append(chat.message('STFUApu Simple Messages are set to: ' .. chat.success('INACTIVE'))));
+            else
+                PrintHelpCommands(true);
+            end
+        end
+    end
 end);
