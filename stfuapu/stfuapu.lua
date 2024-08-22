@@ -15,9 +15,9 @@
 
 addon.name      = 'stfuapu';
 addon.author    = 'mogul';
-addon.version   = '0.2';
-addon.desc      = 'Custom for CatsEyeXI Private Server. Make Apururu stfu about DI battles that are going to happen.';
-
+addon.version   = '0.2.1';
+addon.desc      = 'Custom for CatsEyeXI Private Server. Make Apururu stfu about DI battles that are going to happen. Can also simplify those messages.';
+addon.link      = 'https://github.com/mogulbgod/CatsEyeXI-Addons/tree/main/stfuapu';
 
 require('common');
 local chat = require('chat');
