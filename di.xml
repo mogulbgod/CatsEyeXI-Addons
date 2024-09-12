@@ -1,0 +1,94 @@
+<lootwhore>
+
+	<settings>
+		<defaultaction>ignore</defaultaction>
+		<smartpass>disabled</smartpass>
+		<rarepass>disabled</rarepass>
+		<zonereset>disabled</zonereset>
+	</settings>
+
+	<itemlist>
+		<!-- General DI Drops Start -->
+		<item id="8798">lot</item> <!-- H-P Bayld -->
+		<item id="6267">lot</item> <!-- Aged Bayld Box -->
+		<item id="2858">lot</item> <!-- Wolfram Steel -->
+		<item id="2859">lot</item> <!-- Cobalt Ore -->
+		<item id="6416">lot</item> <!-- Behemoth Meat -->
+		<item id="5714">lot</item> <!-- Pearlscale -->
+		<item id="1126">lot</item> <!-- Beastmen Seal -->
+		<item id="1127">lot</item> <!-- Kindred Seal -->
+		<!--<item id="">lot</item> <!-- H-P Bayld -->
+		<!-- Crystals -->
+		<item id="4096">lot</item> <!-- Fire Crystal -->
+		<item id="4097">lot</item> <!-- Ice Crystal -->
+		<item id="4098">lot</item> <!-- Wind Crystal -->
+		<item id="4099">lot</item> <!-- Earth Crystal -->
+		<item id="4100">lot</item> <!-- Lightening Crystal -->
+		<item id="4101">lot</item> <!-- Water Crystal -->
+		<item id="4102">lot</item> <!-- Light Crystal -->
+		<item id="4103">lot</item> <!-- Dark Crystal -->
+		<!-- Geodes -->
+		<item id="3297">lot</item> <!-- Flame Geode -->
+		<item id="3298">lot</item> <!-- Snow Geode -->
+		<item id="3299">lot</item> <!-- Breeze Geode -->
+		<item id="3300">lot</item> <!-- Soil Geode -->
+		<item id="3301">lot</item> <!-- Thunder Geode -->
+		<item id="3302">lot</item> <!-- Aqua Geode -->
+		<item id="3303">lot</item> <!-- Light Geode -->
+		<item id="3304">lot</item> <!-- Shadow Geode -->
+		<!-- General DI Drops End -->
+		
+		<!-- Colkhab Specific Drops Start -->
+		<item id="20820">pass</item> <!-- Hatxliik -->
+		<item id="20958">pass</item> <!-- Kuakuakait -->
+		<item id="20992">lot</item> <!-- Taikogane -->
+		<item id="3980">lot</item> <!-- Bztavian Stinger -->
+		<!-- Colkhab Specific Drops End -->
+		
+		<!-- Tchakka Specific Drops Start -->
+		<item id="20630">pass</item> <!-- Atoyac -->
+		<item id="21047">pass</item> <!-- Azukinagamitsu -->
+		<item id="21253">pass</item> <!-- Atetepeyorg -->
+		<item id="3979">lot</item> <!-- Rockfin Tooth -->
+		<!-- Tchakka Specific Drops End -->
+		
+		<!-- Achuka Specific Drops Start -->
+		<item id="20543">pass</item> <!-- Maochinoli -->
+		<item id="20731">pass</item> <!-- Xiutleato -->
+		<item id="3977">lot</item> <!-- Gabbrath Horn -->
+		<!-- Achuka Specific Drops End -->
+		
+		<!-- Yumcox Specific Drops Start -->
+		<item id="20872">pass</item> <!-- Ixtab -->
+		<item id="21125">pass</item> <!-- Tamaxchi -->
+		<item id="4014">lot</item> <!-- Yggdreant Bole -->
+		<!-- Yumcox Specific Drops End -->
+		
+		<!-- Hurkan Specific Drops Start -->
+		<item id="21334">pass</item> <!-- Animikii Bullet -->
+		<item id="20826">lot</item> <!-- Hunahpu -->
+		<item id="20768">pass</item> <!-- Kaquljaan -->
+		<item id="20917">pass</item> <!-- Xbalanque -->
+		<item id="4012">lot</item> <!-- Waktza Rostrum -->
+		<!-- Hurkan Specific Drops End -->
+		
+		<!-- Kumhau Specific Drops Start -->
+		<item id="21233">pass</item> <!-- Ajjub Bow -->
+		<item id="21463">pass</item> <!-- Nepote Bell -->
+		<item id="21186">pass</item> <!-- Baqil Staff -->
+		<item id="8752">lot</item> <!-- Cehuetzi Claw -->
+		<!-- Kumhau Specific Drops End -->
+		
+		<!-- Helga Specific Drops Start -->
+		<item id="10151">pass</item> <!-- Cipher: Mayakov -->
+		<!--<item id="">lot</item> <!-- Cipher: Matsui-P I don't have an item ID for this cipher-->
+		
+	</itemlist>
+
+	<droplist>
+	</droplist>
+
+	<storelist>
+	</storelist>
+
+</lootwhore>
