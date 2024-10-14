@@ -8,3 +8,7 @@ Type /stfuapu help or /apu help for a list of commands. Can also display the DI 
 di.xml
 
 This is a Lootwhore profile for the Ashita 4 plugin. To use it put it in the '\catseyexi\catseyexi-client\Ashita\config\Lootwhore\profiles' directory and with Lootwhore loaded type the command '/lw profile di' and this will load the profile as is. You'll want to edit the XML and add 'lot' or 'pass' to the ones you want (or not). Each item is marked to let you know what item it is.
+
+
+CurePlease_Addon
+This is for the current Ashita 4 and works on the CatsEyeXI Private Server.
